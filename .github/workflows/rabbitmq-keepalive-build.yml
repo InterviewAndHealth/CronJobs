@@ -1,4 +1,4 @@
-name: RabbitMQ Keepalive Build and Push Docker Image
+name: RabbitMQ Keepalive Build, Push and Deploy to Dev
 on:
   workflow_dispatch:
 

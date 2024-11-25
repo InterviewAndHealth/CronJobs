@@ -7,7 +7,14 @@ from dotenv import load_dotenv
 
 load_dotenv(override=True)
 
-RABBITMQ_URL = os.getenv("RABBITMQ_URL")
+RABBITMQ_HOST = os.getenv("RABBITMQ_HOST")
+RABBITMQ_PORT = os.getenv("RABBITMQ_PORT")
+RABBITMQ_USERNAME = os.getenv("RABBITMQ_USERNAME")
+RABBITMQ_PASSWORD = os.getenv("RABBITMQ_PASSWORD")
+RABBITMQ_URL = os.getenv(
+    "RABBITMQ_URL",
+    f"amqp://{RABBITMQ_USERNAME}:{RABBITMQ_PASSWORD}@{RABBITMQ_HOST}:{RABBITMQ_PORT}",
+)
 EXCHANGE_NAME = os.getenv("EXCHANGE_NAME")
 QUEUES = os.getenv("QUEUES")
 NO_OF_EVENTS = os.getenv("NO_OF_EVENTS")
