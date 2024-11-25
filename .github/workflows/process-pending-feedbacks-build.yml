@@ -18,7 +18,7 @@ env:
   BRANCH: main
   USERNAME: GopalSaraf
   ACCESS_TOKEN: ${{ secrets.PERSONEL_TOKEN }}
-  FILE_PATH: services/cronjobs/process-pending-feedbacks/overlays/development
+  FILE_PATH: services/cronjobs/process-pending-feedbacks/overlays/development/kustomization.yaml
   KEY: newTag
   ENVIRONMENT: development
 
