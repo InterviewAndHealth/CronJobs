@@ -19,8 +19,11 @@ EXCHANGE_NAME = os.getenv("EXCHANGE_NAME")
 QUEUES = os.getenv("QUEUES")
 NO_OF_EVENTS = os.getenv("NO_OF_EVENTS")
 
-if not RABBITMQ_URL or not EXCHANGE_NAME or not QUEUES or not NO_OF_EVENTS:
-    raise ValueError("Environment variables not set")
+required_env_vars = [RABBITMQ_URL, EXCHANGE_NAME, QUEUES, NO_OF_EVENTS]
+
+if not all(required_env_vars):
+    missing_env_vars = [var for var in required_env_vars if not var]
+    raise ValueError(f"Environment variables not set: {missing_env_vars}")
 
 QUEUES = QUEUES.split(",")
 NO_OF_EVENTS = int(NO_OF_EVENTS)

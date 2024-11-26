@@ -20,8 +20,8 @@ RABBITMQ_PORT = os.getenv("RABBITMQ_PORT")
 RABBITMQ_USERNAME = os.getenv("RABBITMQ_USERNAME")
 RABBITMQ_PASSWORD = os.getenv("RABBITMQ_PASSWORD")
 EXCHANGE_NAME = os.getenv("EXCHANGE_NAME")
-SCHEDULER_QUEUE = os.getenv("SCHEDULER_SERVICE_QUEUE")
-CONVERSATION_QUEUE = os.getenv("CONVERSATION_SERVICE_QUEUE")
+SCHEDULER_QUEUE = os.getenv("SCHEDULER_QUEUE")
+CONVERSATION_QUEUE = os.getenv("CONVERSATION_QUEUE")
 
 # Feedback delay
 FEEDBACK_DELAY = os.getenv("FEEDBACK_DELAY")
@@ -43,7 +43,8 @@ required_env_vars = [
 ]
 
 if not all(required_env_vars):
-    raise ValueError("Environment variables not set")
+    missing_env_vars = [var for var in required_env_vars if not var]
+    raise ValueError(f"Environment variables not set: {missing_env_vars}")
 
 FEEDBACK_DELAY = int(FEEDBACK_DELAY)
 
